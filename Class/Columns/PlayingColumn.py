@@ -5,8 +5,8 @@ from Class.Card import Card
 class PlayingColumn(Column):
     def __init__(
         self,
-        num_of_cards: "int: pass one less then intended amount",
-        deck: "Deck object",
+        num_of_cards: "int",
+        deck: "list",
         can_accept_cards: "bool",
     ):
         super().__init__(num_of_cards, deck, can_accept_cards)

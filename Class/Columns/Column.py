@@ -1,21 +1,16 @@
-from Class.Deck import Deck
-
 class Column:
     def __init__(
         self,
-        num_of_cards: "int: pass one less then intended amount",
-        deck: "Deck object",
+        num_of_cards: "int",
+        deck: "list",
         can_accept_cards: "bool",
     ):
-        if not isinstance(deck, Deck):
-            raise ValueError("Must pass in Deck object")
-
-        self.can_accept_cards = can_accept_cards
 
         self.contents = [
-            deck.contents.pop(card)
-            for card in range(min(num_of_cards, len(deck.contents)), -1, -1)
+            deck.pop(card) for card in range(min(num_of_cards - 1, len(deck)), -1, -1)
         ]
+
+        self.can_accept_cards = can_accept_cards
 
     def display_column(
         self,

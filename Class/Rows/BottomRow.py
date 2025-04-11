@@ -1,23 +1,22 @@
-from Class.Columns.Column import Column
+from Class.Columns.Foundation import Foundation
 from Class.Columns.DrawDeck import DrawDeck
+from Class.Columns.DrawnColumn import DrawnColumn
 from Class.Rows.Row import Row
 
 
-def set_contents(row, foundation, deck):
+def set_contents(row, deck, foundation_deck):
     contents = [
-        DrawDeck(23, deck),
-        Column(-1, deck, False),
+        DrawDeck(24, deck),
+        DrawnColumn(),
     ]
-    contents.extend(Column(0, foundation, False) for x in range(4))
+    contents.extend(Foundation(1, foundation_deck) for _ in range(4))
     return contents
 
 
 class BottomRow(Row):
-    def __init__(
-        self, deck: "deck object", num_of_columns, foundation: "foundation deck object"
-    ):
+    def __init__(self, deck: "list", num_of_columns, foundation_deck: "list"):
         super().__init__(num_of_columns)
-        self.contents = set_contents(self, foundation, deck)
+        self.contents = set_contents(self, deck, foundation_deck)
 
     def display(self):
         from setting import get_x_offset, CARD_HEIGHT
